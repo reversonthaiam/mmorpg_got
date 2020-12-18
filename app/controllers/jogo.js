@@ -1,11 +1,22 @@
 module.exports.jogo = function(application, req, res){
 
 
-    if(req.session.autorizado){
-        res.render('jogo')
-    } else{
-        res.send('usuario precisa fazer login');
-    }
+    if(req.session.autorizado !== true){
+        res.send('Usuario precisa fazer login');
+        return;
+        
+    } 
+    
+    var usuario = req.session.usuario;
+    var casa = req.session.casa;
+
+    var connection = application.config.dbConnection;
+    var JogoDAO = new application.app.models.JogoDAO(connection);
+
+    JogoDAO.inciaJogo(res, usuario, casa);
+    
+    
+
 
 }
 
