@@ -21,19 +21,18 @@
 		<nav class="navbar navbar-default navbar-static-top">
 			<div class="container">
 
-				<%if(validacao.length > 0){%>
-					<div class="alert alert-danger"></div>
-					<strong>Atenção</strong>
-					<ul>
-						<% for(var i = 0; i < validacao.length; i++) {%>
-							<li><%=validacao[i].msg%></li>
+				<% if(validacao.length > 0){ %>
+					<div class="alert alert-danger">
+						<strong>Atenção!</strong>
+						<ul>
+							<% for(var i = 0; i < validacao.length; i++){ %>
+								<li><%= validacao[i].msg %></li>
+							<% } %>
+						</ul>
+					</div>
+				<% } %>
 
-						<%}%>	
-
-					</ul>
-
-					<%}%>
-				<form class="form-inline form-entrar" action="/autenticar" method="post">
+				<form class="form-inline form-entrar" action="/autenticar" method="POST">
 					<div class="form-group">				
 						<input type="text" name="usuario" id="usuario" placeholder="Usuário" class="form-control" autocomplete="off" />
 						<input type="password" name="senha" id="senha" placeholder="Senha" class="form-control" />
