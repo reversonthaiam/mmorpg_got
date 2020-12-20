@@ -37,7 +37,8 @@ app.use(expressSession({
 
 	secret: 'asfdasf',
 	resave: false,
-	saveIninitializized: false
+	saveIninitializized: false,
+	cookie: { maxAge: 30 * 60 * 1000 }
 }));
 
 /* efetua o autoload das rotas, dos models e dos controllers para o objeto app */
